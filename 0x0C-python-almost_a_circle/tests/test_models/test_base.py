@@ -109,12 +109,12 @@ class TestBase_to_json_string(unittest.TestCase):
     """ This is a Unittests for testing to_json_string method of Base class."""
 
     def test_to_json_string_rectangle_type(self):
-        rec = Rectangle(10, 7, 2, 8, 6)
-        self.assertEqual(str, type(Base.to_json_string([rec.to_dictionary()])))
+        r = Rectangle(10, 7, 2, 8, 6)
+        self.assertEqual(str, type(Base.to_json_string([r.to_dictionary()])))
 
     def test_to_json_string_rectangle_one_dict(self):
-        rec = Rectangle(10, 7, 2, 8, 6)
-        self.assertTrue(len(Base.to_json_string([rec.to_dictionary()])) == 53)
+        r = Rectangle(10, 7, 2, 8, 6)
+        self.assertTrue(len(Base.to_json_string([r.to_dictionary()])) == 53)
 
     def test_to_json_string_rectangle_two_dicts(self):
         r1 = Rectangle(2, 3, 5, 19, 2)
@@ -171,35 +171,35 @@ class TestBase_save_to_file(unittest.TestCase):
             pass
 
     def test_save_to_file_one_rectangle(self):
-        rec = Rectangle(10, 7, 2, 8, 5)
-        Rectangle.save_to_file([rec])
-        with open("Rectangle.json", "rec") as f:
+        r = Rectangle(10, 7, 2, 8, 5)
+        Rectangle.save_to_file([r])
+        with open("Rectangle.json", "r") as f:
             self.assertTrue(len(f.read()) == 53)
 
     def test_save_to_file_two_rectangles(self):
         r1 = Rectangle(10, 7, 2, 8, 5)
         r2 = Rectangle(2, 4, 1, 2, 3)
         Rectangle.save_to_file([r1, r2])
-        with open("Rectangle.json", "rec") as f:
+        with open("Rectangle.json", "r") as f:
             self.assertTrue(len(f.read()) == 105)
 
     def test_save_to_file_one_square(self):
         sq = Square(10, 7, 2, 8)
         Square.save_to_file([sq])
-        with open("Square.json", "rec") as f:
+        with open("Square.json", "r") as f:
             self.assertTrue(len(f.read()) == 39)
 
     def test_save_to_file_two_squares(self):
         s1 = Square(10, 7, 2, 8)
         s2 = Square(8, 1, 2, 3)
         Square.save_to_file([s1, s2])
-        with open("Square.json", "rec") as f:
+        with open("Square.json", "r") as f:
             self.assertTrue(len(f.read()) == 77)
 
     def test_save_to_file_cls_name_for_filename(self):
         sq = Square(10, 7, 2, 8)
         Base.save_to_file([sq])
-        with open("Base.json", "rec") as f:
+        with open("Base.json", "r") as f:
             self.assertTrue(len(f.read()) == 39)
 
     def test_save_to_file_overwrite(self):
@@ -207,17 +207,17 @@ class TestBase_save_to_file(unittest.TestCase):
         Square.save_to_file([sq])
         sq = Square(10, 7, 2, 8)
         Square.save_to_file([sq])
-        with open("Square.json", "rec") as f:
+        with open("Square.json", "r") as f:
             self.assertTrue(len(f.read()) == 39)
 
     def test_save_to_file_None(self):
         Square.save_to_file(None)
-        with open("Square.json", "rec") as f:
+        with open("Square.json", "r") as f:
             self.assertEqual("[]", f.read())
 
     def test_save_to_file_empty_list(self):
         Square.save_to_file([])
-        with open("Square.json", "rec") as f:
+        with open("Square.json", "r") as f:
             self.assertEqual("[]", f.read())
 
     def test_save_to_file_no_args(self):
@@ -421,35 +421,35 @@ class TestBase_save_to_file_csv(unittest.TestCase):
             pass
 
     def test_save_to_file_csv_one_rectangle(self):
-        rec = Rectangle(10, 7, 2, 8, 5)
-        Rectangle.save_to_file_csv([rec])
-        with open("Rectangle.csv", "rec") as f:
+        r = Rectangle(10, 7, 2, 8, 5)
+        Rectangle.save_to_file_csv([r])
+        with open("Rectangle.csv", "r") as f:
             self.assertTrue("5,10,7,2,8", f.read())
 
     def test_save_to_file_csv_two_rectangles(self):
         r1 = Rectangle(10, 7, 2, 8, 5)
         r2 = Rectangle(2, 4, 1, 2, 3)
         Rectangle.save_to_file_csv([r1, r2])
-        with open("Rectangle.csv", "rec") as f:
+        with open("Rectangle.csv", "r") as f:
             self.assertTrue("5,10,7,2,8\n2,4,1,2,3", f.read())
 
     def test_save_to_file_csv_one_square(self):
         sq = Square(10, 7, 2, 8)
         Square.save_to_file_csv([sq])
-        with open("Square.csv", "rec") as f:
+        with open("Square.csv", "r") as f:
             self.assertTrue("8,10,7,2", f.read())
 
     def test_save_to_file_csv_two_squares(self):
         s1 = Square(10, 7, 2, 8)
         s2 = Square(8, 1, 2, 3)
         Square.save_to_file_csv([s1, s2])
-        with open("Square.csv", "rec") as f:
+        with open("Square.csv", "r") as f:
             self.assertTrue("8,10,7,2\n3,8,1,2", f.read())
 
     def test_save_to_file__csv_cls_name(self):
         sq = Square(10, 7, 2, 8)
         Base.save_to_file_csv([sq])
-        with open("Base.csv", "rec") as f:
+        with open("Base.csv", "r") as f:
             self.assertTrue("8,10,7,2", f.read())
 
     def test_save_to_file_csv_overwrite(self):
@@ -457,17 +457,17 @@ class TestBase_save_to_file_csv(unittest.TestCase):
         Square.save_to_file_csv([sq])
         sq = Square(10, 7, 2, 8)
         Square.save_to_file_csv([sq])
-        with open("Square.csv", "rec") as f:
+        with open("Square.csv", "r") as f:
             self.assertTrue("8,10,7,2", f.read())
 
     def test_save_to_file__csv_None(self):
         Square.save_to_file_csv(None)
-        with open("Square.csv", "rec") as f:
+        with open("Square.csv", "r") as f:
             self.assertEqual("[]", f.read())
 
     def test_save_to_file_csv_empty_list(self):
         Square.save_to_file_csv([])
-        with open("Square.csv", "rec") as f:
+        with open("Square.csv", "r") as f:
             self.assertEqual("[]", f.read())
 
     def test_save_to_file_csv_no_args(self):

@@ -1,0 +1,3 @@
+#!/usr/bin/python3
+# This send delete request to the url passed and displays reponse
+curl -s -X DELETE "$1"

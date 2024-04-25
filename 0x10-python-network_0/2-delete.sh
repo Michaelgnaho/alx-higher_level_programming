@@ -1,3 +1,3 @@
-#!/usr/bin/python3
-# This send delete request to the url passed and displays reponse
-curl -s -X DELETE "$1"
+#!/bin/bash
+# This Send a DELETE request to a given URL and display the response body.
+curl -sX DELETE "$1"

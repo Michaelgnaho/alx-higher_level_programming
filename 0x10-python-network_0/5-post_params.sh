@@ -1,3 +1,3 @@
-#!/bin/python3
-# This is the script to post data (url-encoded) to a server
-curl -s -d "email=hr@holbertonschool.com&subject=I%20will%20always%20be%20here%20for%20PLD" -X POST "$1"
+#!/bin/bash
+# This is the Bash scripts that sends a POST request to a given URL.
+curl -s -X POST -d "email=test@gmail.com&subject=I will always be here for PLD" "$1"

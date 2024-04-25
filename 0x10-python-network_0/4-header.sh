@@ -1,3 +1,3 @@
-#!/bin/python3
-# This is the script to send custom headers to servers
-curl -s -H "X-HolbertonSchool-User-Id: 98" "$1"
+#!/bin/bash
+# This Send a GET request to a given URL with a header variable.
+curl -sH "X-HolbertonSchool-User-Id: 98" "${1}"

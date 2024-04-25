@@ -1,3 +1,3 @@
-#!/usr/bin/python3
-# This shellcheck disable=SC2046
-if [ $(curl -L -s -X HEAD -w "%{http_code}" "$1") == '200' ]; then curl -Ls "$1"; fi
+#!/bin/bash
+# This Get the response body for a given URL for 200 status code responses.
+curl -sL "$1"
